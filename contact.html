@@ -9,10 +9,22 @@
     <script src="https://assets.adobedtm.com/21b53c73144b/bd73161192e0/launch-6dd8d4d01c07-development.min.js" async></script>
 
     <script>
-        var datalayer={
-            pagename: "Homepage",
-            pageID: "1"
-        }
+        window.adobeDataLayer=window.adobeDataLayer || [];
+        window.adobeDataLayer.push({
+            event: "landed",
+            eventInfo: {
+                eventName: "landed"
+            },
+            custData: {
+                custId: "001",
+                loginStatus: "logged in"
+            },
+            page: {
+                pageName: "Home",
+                pageType: "Home",
+                language: "English"
+            }
+        });
     </script>
     <style>
         .about
