@@ -7,6 +7,26 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script>
+        window.adobeDataLayer = window.adobeDataLayer || [];
+        window.adobeDataLayer.push({
+        "event": "landed",
+        "eventInfo": {
+            "eventName": "landed"
+        },
+        "custData": {
+            "custId": "001",
+            "loginStatus": "logged in"
+        },
+        "page": {
+            "pageName": "PLP",
+            "pageType": "PLP",
+            "language": "English",
+            "productCount": "32",
+            "pageCategory": "Clothing"
+        }
+    });
+    </script>
+    <script>
         // Function to add product to the cart
         function addToCart(product) {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
