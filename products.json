@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Cartoon Astronaut T-Shirt",
+        "price": "$70",
+        "image": "img/products/f1.jpg",
+        "brand": "Adidas",
+        "stars": 5
+    },
+    {
+        "name": "Stylish T-Shirt",
+        "price": "$50",
+        "image": "img/products/f2.jpg",
+        "brand": "Nike",
+        "stars": 4
+    }
+
+]
