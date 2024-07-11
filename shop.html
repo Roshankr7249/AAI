@@ -7,25 +7,69 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="https://assets.adobedtm.com/21b53c73144b/bd73161192e0/launch-6dd8d4d01c07-development.min.js" async></script>
-    
+</head>
+<body>
+    <section id="header">
+        <a href="#" class="logo">E-Com</a>
+        <div class="navbar-right">
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a class="active" href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <span id="close" class="material-symbols-outlined">close</span>
+            </ul>
+        </div>
+        <div class="mobile">
+            <a href="cart.html"><span class="material-symbols-outlined">local_mall</span></a>
+            <span id="bar" class="material-symbols-outlined">menu</span>
+        </div>
+    </section>
+    <section class="shop-hero">
+        <h2>#ShoPurChoice</h2>
+        <p>Save more with best coupons !! up to 70% off</p>
+    </section>
+    <section class="product1 section-p1">
+        <div class="pro-container">
+            <!-- Products will be loaded here dynamically -->
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="col">
+            <h2 class="logo">E-Com</h2>
+            <h4>Contact</h4>
+            <p>Address: Address</p>
+            <p>Email: Email</p>
+            <p>Phone: Phone</p>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About Us</a>
+            <a href="#">Delivery Options</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">T&C</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign In</a>
+            <a href="#">View Cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="#">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+    </footer>
+    <script type="module" src="script.js"></script>
+
     <script>
-        // Function to add product to the cart
-        function addToCart(product) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.push(product);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            alert('Product added to cart');
-        }
-
-        // Function to go to the product description page
-        function goToProductDescription(product) {
-            localStorage.setItem('product', JSON.stringify(product));
-            window.location.href = 'sproduct.html';
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
             fetch('products.json')
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
                 .then(products => {
                     const productContainer = document.querySelector('.pro-container');
                     productContainer.innerHTML = '';
@@ -57,29 +101,26 @@
                         });
                     });
 
-                    // Push to adobeDataLayer with the correct product length and details
-                    
-                        window.adobeDataLayer =window.adobeDataLayer || []
-                        window.adobeDataLayer.push({
-                            "event": "productLanded",
-                            "eventInfo": {
-                                "eventName": "productLanded"
-                            },
-                            "custData": {
-                                "custId": "001",
-                                "loginStatus": "logged in"
-                            },
-                            "page": {
-                                "pageName": "PLP",
-                                "pageType": "PLP",
-                                "language": "English",
-                                "productCount": products.length,
-                                "pageCategory": "Clothing"
-                            }    
+                    window.adobeDataLayer = window.adobeDataLayer || [];
+                    window.adobeDataLayer.push({
+                        "event": "productLanded",
+                        "eventInfo": {
+                            "eventName": "productLanded"
+                        },
+                        "custData": {
+                            "custId": "001",
+                            "loginStatus": "logged in"
+                        },
+                        "page": {
+                            "pageName": "PLP",
+                            "pageType": "PLP",
+                            "language": "English",
+                            "productCount": products.length,
+                            "pageCategory": "Clothing"
+                        }
                     });
-                    
-                    });
-                });
+                })
+                .catch(error => console.error('There was a problem with the fetch operation:', error));
 
             function createStars(starCount) {
                 let stars = '';
@@ -92,80 +133,18 @@
                 return stars;
             }
         });
+
+        function addToCart(product) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert('Product added to cart');
+        }
+
+        function goToProductDescription(product) {
+            localStorage.setItem('product', JSON.stringify(product));
+            window.location.href = 'sproduct.html';
+        }
     </script>
-</head>
-<body>
-    <section id="header">
-        <a href="#" class="logo">E-Com </a>
-        <div class="navbar-right">
-            <ul id="navbar">
-                <li><a href="index.html">Home</a></li>
-                <li><a class="active" href="shop.html">Shop</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <span id="close" class="material-symbols-outlined">close</span>
-            </ul>
-        </div>
-        <div class="mobile">
-            <a href="cart.html"><span class="material-symbols-outlined">local_mall</span></a>
-            <span id="bar" class="material-symbols-outlined">menu</span>
-        </div>
-    </section>
-    <!-- ....................................................................................................... -->
-
-    <section class="shop-hero">
-        <h2>#ShoPurChoice</h2>
-        <p>Save more with best coupons !! upto 70% off</p>
-    </section>
-    <!-- ......................................................................................................... -->
-
-    <section class="product1 section-p1">
-        <div class="pro-container">
-            <!-- Products will be loaded here dynamically -->
-        </div>
-    </section>
-
-    <!-- ............................footer.............................. -->
-    <footer class="footer">
-        <div class="col">
-            <h2 class="logo">E-Com</h2>
-            <h4>Contact</h4>
-            <p>Address: Address</p>
-            <p>Email: Email</p>
-            <p>Phone: Phone</p>
-        </div>
-        <div class="col">
-            <h4>About</h4>
-            <a href="#">About Us</a>
-            <a href="#">Delivery Options</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">T&C</a>
-            <a href="#">Contact Us</a>
-        </div>
-        <div class="col">
-            <h4>My Account</h4>
-            <a href="#">Sign In</a>
-            <a href="#">View Cart</a>
-            <a href="#">My Wishlist</a>
-            <a href="#">Track My Order</a>
-            <a href="#">Help</a>
-        </div>
-    </footer>
-    <script type="module" src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-      
-
-
-                     
-
-
