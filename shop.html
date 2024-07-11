@@ -9,11 +9,11 @@
     <script src="https://assets.adobedtm.com/21b53c73144b/bd73161192e0/launch-6dd8d4d01c07-development.min.js" async></script>
     <script>
         window.adobeDataLayer = window.adobeDataLayer || [];
-// document.addEventListener('DOMContentLoaded', () => {
-    // Assuming the data is fetched or available after DOM content is loaded
-    // fetch('products.json')
-    //     .then(response => response.json())
-    //     .then(products => {
+document.addEventListener('DOMContentLoaded', () => {
+    Assuming the data is fetched or available after DOM content is loaded
+    fetch('products.json')
+        .then(response => response.json())
+        .then(products => {
             window.adobeDataLayer.push({
                 "event": "landed",
                 "eventInfo": {
@@ -30,30 +30,19 @@
                     "productCount": products.length,
                     "pageCategory": "Clothing"
                 },
-                function productClick(){
-                window.adobeDataLayer.push({
-            'products': 
-                  {
-                  'name': 'Cartoon Astronaut T-Shirt 1',
-                  'id': 'floral-shirt-3',
-                  'price': '$70',
-                  'category': 'Shirts',
-                  'variant': 'Floral Print'
-                }
-               });
-                }
-                // 'product':{
-                //     'name': 'Cartoon Astronaut T-Shirt 1',
-                //       'id': 'floral-shirt-3',             
-                //       'price': '$70',
-                //       'category': 'Shirts',
-                //       'variant': 'Floral Print'
-                //     }
+                
+                'product':{
+                    'name': 'Cartoon Astronaut T-Shirt 1',
+                      'id': 'floral-shirt-3',             
+                      'price': '$70',
+                      'category': 'Shirts',
+                      'variant': 'Floral Print'
+                    }
                 
                
             });
-        // });
-// });
+        });
+});
 
     </script>
     <script>
