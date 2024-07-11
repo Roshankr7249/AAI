@@ -97,7 +97,7 @@
 <div class="product-stars"></div>
 <h3 class="product-price"></h3>
 <p class="product-description-text">Detailed product description goes here.</p>
-<button onclick= "" class="add-to-cart">Add to Cart</button>
+<button onclick= "window.location.href="cart.html"" class="add-to-cart">Add to Cart</button>
 </div>
 </div>
 </section>
@@ -135,6 +135,7 @@
             cart.push(product);
             localStorage.setItem('cart', JSON.stringify(cart));
             alert('Product added to cart');
+           
         });
 </script>
 </body>
