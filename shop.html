@@ -14,6 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('products.json')
         .then(response => response.json())
         .then(products => {
+            const adobeProductArray = products.map(product => ({
+                        productID: product.name,
+                        productPrice: product.price,
+                        productBrand: product.brand
+                    }));
          
             window.adobeDataLayer.push({
                 "event": "landed",
@@ -31,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     "productCount": products.length,
                     "pageCategory": "Clothing"
                 },
+                "product": adobeProductArray
              
             });
         });
