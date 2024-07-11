@@ -100,25 +100,6 @@
                             }
                         });
                     });
-
-                    window.adobeDataLayer = window.adobeDataLayer || [];
-                    window.adobeDataLayer.push({
-                        "event": "productLanded",
-                        "eventInfo": {
-                            "eventName": "productLanded"
-                        },
-                        "custData": {
-                            "custId": "001",
-                            "loginStatus": "logged in"
-                        },
-                        "page": {
-                            "pageName": "PLP",
-                            "pageType": "PLP",
-                            "language": "English",
-                            "productCount": products.length,
-                            "pageCategory": "Clothing"
-                        }
-                    });
                 })
                 .catch(error => console.error('There was a problem with the fetch operation:', error));
 
