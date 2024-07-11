@@ -31,14 +31,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     "pageCategory": "Clothing"
                 },
                 function productClick() {
+                    window.adobeDataLayer.push({
+                    
                     'products': 
                           {
                           'name': 'Cartoon Astronaut T-Shirt 1',
                           'id': 'floral-shirt-3',
-                          'price': products.price,
+                          'price': '$70',
                           'category': 'Shirts',
                           'variant': 'Floral Print'
                         }
+                    })
                 }
             });
         });
