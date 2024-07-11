@@ -29,6 +29,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     "language": "English",
                     "productCount": products.length,
                     "pageCategory": "Clothing"
+                },
+                function productClick() {
+                    'products': 
+                          {
+                          'name': 'Cartoon Astronaut T-Shirt 1',
+                          'id': 'floral-shirt-3',
+                          'price': products.price,
+                          'category': 'Shirts',
+                          'variant': 'Floral Print'
+                        }
                 }
             });
         });
@@ -48,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 productElement.classList.add('pro');
                 productElement.innerHTML = `
                     <img src="${product.image}" alt="${product.name}">
-                    <div class="des">
+                    <div class="des" onclick="productClick()>
                         <span>${product.brand}</span>
                         <h5>${product.name}</h5>
                         <div class="stars">${createStars(product.stars)}</div>
