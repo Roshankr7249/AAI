@@ -12,14 +12,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Assuming the data is fetched or available after DOM content is loaded
     fetch('products.json')
-        .then(response => response.json())
-        .then(products => {
-            const adobeProductArray = products.map(product => ({
+        const adobeProductArray = products.map(product => ({
                         productID: product.name,
                         productPrice: product.price,
                         productBrand: product.brand
                     }));
-         
+        .then(response => response.json())
+        .then(products => {
+                    
             window.adobeDataLayer.push({
                 "event": "landed",
                 "eventInfo": {
