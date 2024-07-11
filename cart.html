@@ -50,6 +50,14 @@
                         <button class="remove-item">Remove</button>
                     `;
                     cartContainer.appendChild(productElement);
+                    window.adobeDataLayer.push({
+                    "event": "productView",
+                    "product": {
+                        "name": product.name,
+                        "price": product.price
+                        // Add more product attributes as needed
+                    }
+                });
                 });
 
                 // Display the total amount
@@ -77,16 +85,7 @@
                 });
             });
         });
-        function productClick(name, price, brand) {
-        window.adobeDataLayer.push({
-            "event": "productClick",
-            "product": {
-                'name': name,
-                'price': price,
-                'brand': brand
-            }
-        });
-    }
+        
     </script>
     <style>
         .cart-item {
