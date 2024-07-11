@@ -57,30 +57,23 @@
                         });
                     });
 
-                    // Push to adobeDataLayer with the correct product length and details
-                    products.forEach(product => {
-                        window.adobeDataLayer.push({
-                            "event": "productLanded",
-                            "eventInfo": {
-                                "eventName": "productLanded"
-                            },
-                            "custData": {
-                                "custId": "001",
-                                "loginStatus": "logged in"
-                            },
-                            "page": {
-                                "pageName": "PLP",
-                                "pageType": "PLP",
-                                "language": "English",
-                                "productCount": products.length,
-                                "pageCategory": "Clothing"
-                            },
-                            "product": {
-                                "name": product.name,
-                                "price": product.price,
-                                "brand": product.brand
-                            }
-                        });
+                    // Push to adobeDataLayer with the correct product length
+                    window.adobeDataLayer.push({
+                        "event": "landed",
+                        "eventInfo": {
+                            "eventName": "landed"
+                        },
+                        "custData": {
+                            "custId": "001",
+                            "loginStatus": "logged in"
+                        },
+                        "page": {
+                            "pageName": "PLP",
+                            "pageType": "PLP",
+                            "language": "English",
+                            "productCount": products.length,
+                            "pageCategory": "Clothing"
+                        }
                     });
                 });
 
