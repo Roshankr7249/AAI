@@ -58,7 +58,7 @@
                     });
 
                     // Push to adobeDataLayer with the correct product length and details
-                    products.forEach(product => {
+                    
                         window.adobeDataLayer =window.adobeDataLayer || []
                         window.adobeDataLayer.push({
                             "event": "productLanded",
@@ -76,6 +76,7 @@
                                 "productCount": products.length,
                                 "pageCategory": "Clothing"
                             },
+                            products.forEach(product => {
                             "product": {
                                 "name": product.name,
                                 "price": product.price,
