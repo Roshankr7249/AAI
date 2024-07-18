@@ -6,117 +6,102 @@
 <title>MyEcommWebsite</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-<script src="https://assets.adobedtm.com/21b53c73144b/bd73161192e0/launch-6dd8d4d01c07-development.min.js" async></script>
+
  
+<script src="https://assets.adobedtm.com/21b53c73144b/c1d0ce6148bc/launch-df92e922558d-development.min.js" async></script>
 <script>
-    // Define the Adobe Data Layer
-    window.adobeDataLayer = window.adobeDataLayer || [];
- 
-    // Function to push Adobe Data Layer for landing event
-    window.adobeDataLayer.push({
-        "event": "landed",
-        "eventInfo": {
-            "eventName": "landed"
-        },
-        "custData": {
-            "custId": "001",
-            "loginStatus": "logged in"
-        },
-        "page": {
-            "pageName": "PLP",
-            "pageType": "PLP",
-            "language": "English",
-            "pageCategory": "Clothing"
+        // Function to add product to the cart
+        function addToCart(product) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert('Product added to cart');
         }
-    });
  
-    let adobeProductArray = []; // Define adobeProductArray in a global scope
+        // Function to go to the product description page
+        function goToProductDescription(product) {
+            localStorage.setItem('product', JSON.stringify(product));
+            window.location.href = 'sproduct.html';
+        }
  
-    document.addEventListener('DOMContentLoaded', () => {
-        fetch('products.json')
-            .then(response => response.json())
-            .then(products => {
-                const productContainer = document.querySelector('.pro-container');
-                productContainer.innerHTML = '';
-                products.forEach(product => {
-                    const productElement = document.createElement('div');
-                    productElement.classList.add('pro');
-                    productElement.innerHTML = `
-<img onclick="productClick('${product.name}', '${product.price}', '${product.brand}')" src="${product.image}" alt="${product.name}">
-<div onclick="productClick('${product.name}', '${product.price}', '${product.brand}')" class="des">
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('products.json')
+                .then(response => response.json())
+                .then(products => {
+                    const productContainer = document.querySelector('.pro-container');
+                    productContainer.innerHTML = '';
+                    products.forEach(product => {
+                        const productElement = document.createElement('div');
+                        productElement.classList.add('pro');
+                        productElement.innerHTML = `
+<img src="${product.image}" alt="${product.name}">
+<div class="des">
 <span>${product.brand}</span>
 <h5>${product.name}</h5>
 <div class="stars">${createStars(product.stars)}</div>
 <h4>${product.price}</h4>
 </div>
 <a href="#" class="cart"><span class="material-symbols-outlined">add_shopping_cart</span></a>
-                    `;
-                    productContainer.appendChild(productElement);
+                        `;
+                        productContainer.appendChild(productElement);
  
-                    productElement.querySelector('.cart').addEventListener('click', (event) => {
-                        event.preventDefault();
-                        addToCart(product);
-                    });
- 
-                    productElement.addEventListener('click', (event) => {
-                        if (!event.target.classList.contains('cart')) {
+                        productElement.querySelector('.cart').addEventListener('click', (event) => {
                             event.preventDefault();
-                            goToProductDescription(product);
-                        }
+                            addToCart(product);
+                        });
+ 
+                        productElement.addEventListener('click', (event) => {
+                            if (!event.target.classList.contains('cart')) {
+                                event.preventDefault();
+                                goToProductDescription(product);
+                            }
+                        });
                     });
+ 
+                    // Prepare Adobe Data Layer for all products
+                    const adobeProductArray = products.map(product => ({
+                        productID: product.name,
+                        productPrice: product.price,
+                    }));
+ 
+                    // Push to adobeDataLayer with the correct product length
+                    window.adobeDataLayer = window.adobeDataLayer || [];
+                    window.adobeDataLayer.push({
+                        "event": "shopnow",
+                        "eventInfo": {
+                            "eventName": "View"
+                        },
+                        "custData": {
+                            "custId": "001",
+                            "loginStatus": "logged in" 
+                        },
+                        "page": {
+                            "pageName": "Shop",
+                            "pageType": "PLP",
+                            "language": "English", 
+                            "productCount": products.length,
+                            "pageCategory": "Clothing" 
+                        },
+                        "product": adobeProductArray
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching products:', error);
                 });
  
-                // Update adobeProductArray with products data
-                adobeProductArray = products.map(product => ({
-                    productID: product.name,
-                    productPrice: product.price,
-                    productBrand: product.brand
-                }));
-            })
-            .catch(error => {
-                console.error('Error fetching products:', error);
-            });
- 
-        function createStars(starCount) {
-            let stars = '';
-            for (let i = 0; i < starCount; i++) {
-                stars += '<span class="material-symbols-outlined">star</span>';
-            }
-            for (let i = starCount; i < 5; i++) {
-                stars += '<span class="material-symbols-outlined">star_border</span>';
-            }
-            return stars;
-        }
-    });
- 
-    // Function to handle product click and push Adobe Data Layer
-    function productClick(name, price, brand) {
-        window.adobeDataLayer.push({
-            "event": "productClick",
-            "product": {
-                'name': name,
-                'price': price,
-                'brand': brand
+            function createStars(starCount) {
+                let stars = '';
+                for (let i = 0; i < starCount; i++) {
+                    stars += '<span class="material-symbols-outlined">star</span>';
+                }
+                for (let i = starCount; i < 5; i++) {
+                    stars += '<span class="material-symbols-outlined">star_border</span>';
+                }
+                return stars;
             }
         });
-    }
- 
-    // Function to add product to the cart
-    function addToCart(product) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.push(product);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        alert('Product added to cart');
-    }
- 
-    // Function to go to the product description page
-    function goToProductDescription(product) {
-        localStorage.setItem('product', JSON.stringify(product));
-        window.location.href = 'sproduct.html';
-    }
 </script>
- 
- 
+<script src="https://assets.adobedtm.com/21b53c73144b/c1d0ce6148bc/launch-df92e922558d-development.min.js" async></script>
 </head>
 <body>
 <section id="header">
