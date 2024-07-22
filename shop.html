@@ -59,8 +59,17 @@
  
                     // Prepare Adobe Data Layer for all products
                     const adobeProductArray = products.map(product => ({
-                        productID: product.name,
-                        productPrice: product.price,
+                            "productName": product.productName || "Cartoon Astronaut T-Shirt",
+                            "productCategory": product.productCategory || "Apparel",
+                            "productId": product.productId || "ABC123",
+                            "productSize": product.productSize || "M",
+                            "productPrice": product.productPrice || "$70",
+                            "productSalePrice": product.productSalePrice || "$60",
+                            "productDiscountedPrice": product.productDiscountedPrice || "$60",
+                            "discountPercentage": product.discountPercentage || "10%",
+                            "productQuantity": product.productQuantity || "1",
+                            "productInStock": "yes",
+                            "productVariantId": product.productVariantId || "12345"
                     }));
  
                     // Push to adobeDataLayer with the correct product length
