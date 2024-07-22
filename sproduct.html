@@ -205,52 +205,52 @@
 </div>
 </footer>
 <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const product = JSON.parse(localStorage.getItem('product'));
-            if (product) {
-                document.querySelector('.product-image').src = product.image;
-                document.querySelector('.product-name').textContent = product.productName || "Cartoon Astronaut T-Shirt";
-                document.querySelector('.product-brand').textContent = product.productBrand || "Brand Name";
-                document.querySelector('.product-price').textContent = product.productPrice || "$70";
-                document.querySelector('.product-stars').innerHTML = createStars(product.productStars || 4);
+        // document.addEventListener('DOMContentLoaded', () => {
+        //     const product = JSON.parse(localStorage.getItem('product'));
+        //     if (product) {
+        //         document.querySelector('.product-image').src = product.image;
+        //         document.querySelector('.product-name').textContent = product.productName || "Cartoon Astronaut T-Shirt";
+        //         document.querySelector('.product-brand').textContent = product.productBrand || "Brand Name";
+        //         document.querySelector('.product-price').textContent = product.productPrice || "$70";
+        //         document.querySelector('.product-stars').innerHTML = createStars(product.productStars || 4);
  
-                // Push product details to Adobe Data Layer
-                window.adobeDataLayer.push({
-                    "event": "landed",
-                    "eventInfo": {
-                        "eventName": "landed"
-                    },
-                    "custData": {
-                        "custId": "7236282",
-                        "loginStatus": "logged in"
-                    },
-                    "page": {
-                        "pageName": "PDP",
-                        "pageType": "PDP",
-                        "language": "English",
-                        "pincodeStatus": "Deliverable"
-                    },
-                    "product": [
-                        {
-                            "productName": product.productName || "Cartoon Astronaut T-Shirt",
-                            "productCategory": product.productCategory || "Apparel",
-                            "productId": product.productId || "ABC123",
-                            "productSize": product.productSize || "M",
-                            "productPrice": product.productPrice || "$70",
-                            "productSalePrice": product.productSalePrice || "$60",
-                            "productDiscountedPrice": product.productDiscountedPrice || "$60",
-                            "discountPercentage": product.discountPercentage || "10%",
-                            "productQuantity": product.productQuantity || "1",
-                            "productInStock": "yes",
-                            "productVariantId": product.productVariantId || "12345"
-                        }
-                    ]
-                });
+        //         // Push product details to Adobe Data Layer
+        //         window.adobeDataLayer.push({
+        //             "event": "landed",
+        //             "eventInfo": {
+        //                 "eventName": "landed"
+        //             },
+        //             "custData": {
+        //                 "custId": "7236282",
+        //                 "loginStatus": "logged in"
+        //             },
+        //             "page": {
+        //                 "pageName": "PDP",
+        //                 "pageType": "PDP",
+        //                 "language": "English",
+        //                 "pincodeStatus": "Deliverable"
+        //             },
+        //             "product": [
+        //                 {
+        //                     "productName": product.productName || "Cartoon Astronaut T-Shirt",
+        //                     "productCategory": product.productCategory || "Apparel",
+        //                     "productId": product.productId || "ABC123",
+        //                     "productSize": product.productSize || "M",
+        //                     "productPrice": product.productPrice || "$70",
+        //                     "productSalePrice": product.productSalePrice || "$60",
+        //                     "productDiscountedPrice": product.productDiscountedPrice || "$60",
+        //                     "discountPercentage": product.discountPercentage || "10%",
+        //                     "productQuantity": product.productQuantity || "1",
+        //                     "productInStock": "yes",
+        //                     "productVariantId": product.productVariantId || "12345"
+        //                 }
+        //             ]
+        //         });
  
-            } else {
-                window.location.href = 'shop.html'; // Redirect if no product data found
-            }
-        });
+        //     } else {
+        //         window.location.href = 'shop.html'; // Redirect if no product data found
+        //     }
+        // });
  
         document.querySelector('.add-to-cart').addEventListener('click', () => {
             const product = JSON.parse(localStorage.getItem('product')) || {};
