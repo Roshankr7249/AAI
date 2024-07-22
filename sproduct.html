@@ -15,10 +15,10 @@
             const product = JSON.parse(localStorage.getItem('product'));
             if (product) {
                 document.querySelector('.product-image').src = product.image;
-                document.querySelector('.product-name').textContent = product.productName || "Cartoon Astronaut T-Shirt";
-                document.querySelector('.product-brand').textContent = product.productBrand || "Brand Name";
-                document.querySelector('.product-price').textContent = product.productPrice || "$70";
-                document.querySelector('.product-stars').innerHTML = createStars(product.productStars || 4);
+                document.querySelector('.product-name').textContent = product.name || "Cartoon Astronaut T-Shirt";
+                document.querySelector('.product-brand').textContent = product.brand || "Brand Name";
+                document.querySelector('.product-price').textContent = product.price || "$70";
+                document.querySelector('.product-stars').innerHTML = createStars(product.stars || 4);
  
                 // Push product details to Adobe Data Layer
                 window.adobeDataLayer.push({
