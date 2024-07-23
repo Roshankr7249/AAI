@@ -55,15 +55,9 @@
                                 goToProductDescription(product);
                             }
                         });
-                     const clickableElements = productElement.querySelectorAll('img, .des span, .des h5, .des h4');
-    clickableElements.forEach(element => {
-        element.addEventListener('click', () => productClick(product));
-    });
+                    
                     });
-                 function productClick(product) {
-    console.log('Product clicked:', product);
-    // You can add any additional logic here
-}
+                
  
                     // Prepare Adobe Data Layer for all products
                     const adobeProductArray = products.map(product => ({
