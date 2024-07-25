@@ -42,7 +42,7 @@
                             "productCategory": product.brand || "Apparel",
                             "productId": product.Id || "ABC123",
                             "productSize": product.size || "M",
-                            "productPrice": product.price || "$70",
+                            "productPrice": parseFloat(productData.price.replace('$', '')) || "$70",
                             "productSalePrice": product.price || "$60",
                             "productDiscountedPrice": product.price || "$60",
                             "discountPercentage": product.discountPercentage || "10%",
